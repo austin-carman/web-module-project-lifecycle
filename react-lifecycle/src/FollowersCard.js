@@ -5,13 +5,17 @@ class FollowersCard extends React.Component {
 
     render(){
         return(
-            <div>
+            <div className='followers-card' >
                 <h2>Followers</h2>
-                {
-                    this.props.followers.map(follower => (  
-                        <p key={follower.id}>{follower.login}</p>
-                    ))
-                }
+                <div className='follower'>
+                    { 
+                        this.props.followers.map(follower => (
+                            <ul key={follower.id}>
+                                <li>{follower.login}</li>
+                            </ul>
+                        ))
+                    }
+                </div>
                 {/* <p>{this.props.follower}</p> */}
             </div>
         )

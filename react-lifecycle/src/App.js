@@ -34,7 +34,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>Hello</h1>
+        <h1>Github Profile</h1>
         <ProfileCard profile={this.state.profile} />
         <FollowersCard followers={this.state.followers} />
       </div>
