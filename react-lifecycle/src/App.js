@@ -13,7 +13,6 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('https://api.github.com/users/austin-carman')
       .then(res => {
-        console.log(res.data);
         this.setState({
           ...this.state, profile: res.data
         })

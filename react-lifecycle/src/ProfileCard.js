@@ -9,8 +9,8 @@ class ProfileCard extends React.Component {
                 <img src={this.props.profile.avatar_url} alt='profile' />
                 <div className='profile-info' >
                     <p>Name: {this.props.profile.name}</p>
-                    <p>Location: {this.props.profile.location}</p>
-                    {this.props.profile.bio ? <p>Bio: {this.props.profile.bio}</p> : ''}
+                    <p>Location: {this.props.profile.location ? this.props.profile.location : 'unknown'}</p>
+                    <p>Bio: {this.props.profile.bio ? this.props.profile.bio : 'N/A'}</p>
                     <p>Followers: {this.props.profile.followers}</p>
                     <p>Following: {this.props.profile.following}</p>
                     <p>Public Repos: {this.props.profile.public_repos}</p>
