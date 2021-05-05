@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ProfileCard from './ProfileCard';
-import FollowersCard from './FollowersCard';
+import FollowersList from './FollowersList';
 import './App.css';
 
 class App extends React.Component {
@@ -13,6 +13,7 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('https://api.github.com/users/austin-carman')
       .then(res => {
+        console.log(res.data);
         this.setState({
           ...this.state, profile: res.data
         })
@@ -24,16 +25,12 @@ class App extends React.Component {
     axios.get('https://api.github.com/users/austin-carman/followers')
       .then(res => {
         const followersLogin = []
-        res.data.map(user => {
-          return(
-            followersLogin.push(user.login)
-          )
-        })
-        // console.log(followersLogin);
+        res.data.map(user => (
+            followersLogin.push(user.url)
+        ))
           followersLogin.forEach(fol => {
-            axios.get(`https://api.github.com/users/${fol}`)
+            axios.get(fol)
               .then(resp => {
-                // console.log(resp);
                 this.setState({followers: [...this.state.followers, resp.data]});
               })
               .catch(err => {
@@ -44,7 +41,6 @@ class App extends React.Component {
       .catch(err => {
           console.log(err);
       })
-      // console.log(this.state.followers);
   }
 
 
@@ -53,12 +49,7 @@ class App extends React.Component {
       <div className="App">
         <h1>Github Profile</h1>
         <ProfileCard profile={this.state.profile} />
-        {this.state.followers.map(res => {
-          return(
-            <FollowersCard followers={res} />
-          )
-        })
-        } 
+        <FollowersList followers={this.state.followers} />
       </div>
     );
   }

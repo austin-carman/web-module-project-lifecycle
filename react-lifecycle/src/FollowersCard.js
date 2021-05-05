@@ -8,11 +8,13 @@ class FollowersCard extends React.Component {
             <div className='profile-card' >
                 <img src={this.props.followers.avatar_url} alt='profile' />
                 <div className='profile-info' >
-                    <p>Login: {this.props.followers.name}</p>
+                    <p>Name: {this.props.followers.name}</p>
                     <p>Location: {this.props.followers.location}</p>
-                    <p>Profile: <a href={`https://github.com/${this.props.followers.login}`}>{`https://github.com/${this.props.followers.login}/`}</a></p>
+                    {this.props.followers.bio ? <p>Bio: {this.props.followers.bio}</p> : ''}
                     <p>Followers: {this.props.followers.followers}</p>
                     <p>Following: {this.props.followers.following}</p>
+                    <p>Public Repos: {this.props.followers.public_repos}</p>
+                    <p>Profile: <a href={`https://github.com/${this.props.followers.login}`}>{`https://github.com/${this.props.followers.login}/`}</a></p>
                 </div> 
             </div>
         )
