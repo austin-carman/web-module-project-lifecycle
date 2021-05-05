@@ -5,18 +5,15 @@ class FollowersCard extends React.Component {
 
     render(){
         return(
-            <div className='followers-card' >
-                <h2>Followers</h2>
-                <div className='follower'>
-                    { 
-                        this.props.followers.map(follower => (
-                            <ul key={follower.id}>
-                                <li>{follower.login}</li>
-                            </ul>
-                        ))
-                    }
-                </div>
-                {/* <p>{this.props.follower}</p> */}
+            <div className='profile-card' >
+                <img src={this.props.followers.avatar_url} alt='profile' />
+                <div className='profile-info' >
+                    <p>Login: {this.props.followers.name}</p>
+                    <p>Location: {this.props.followers.location}</p>
+                    <p>Profile: <a href={`https://github.com/${this.props.followers.login}`}>{`https://github.com/${this.props.followers.login}/`}</a></p>
+                    <p>Followers: {this.props.followers.followers}</p>
+                    <p>Following: {this.props.followers.following}</p>
+                </div> 
             </div>
         )
     }
